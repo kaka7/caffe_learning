@@ -57,6 +57,8 @@ CPU版本的这个调试不支持
 
 
 
+![效果](./result.JPG)
+
 ##caffe train过程
 
 tools/caffe.cpp 入口文件,参考该目录下的caffe.cpp,详细给出了注释和补充
