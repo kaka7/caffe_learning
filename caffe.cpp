@@ -85,16 +85,7 @@ const数据成员只在某个对象生存期内是常量，而对于整个类而
 ]]
 
 [[
-#define ,const,static
-static是修饰作用域,const是为了不被修改
-Define和const都有定义作用,
-推荐使用static与const组合的方法（静态全局只读变量）来定义常用的常量，二者比较如下：
-(1)宏是预编译（编译之前处理）；const是编译阶段才做处理。
-(2)宏不含类型信息，不做检查，不会报编译错误，只是替换；const会编译检查，会报编译错误。
-(3)宏可以定义一些函数，方法。 const不能。
-(4)使用大量宏，容易造成编译时间久，每次都需要重新替换。
-]]
-因此，还有一种解决方案是使用全局变量，因为全局变量也是放在数据段的，但是并不推荐使用全局变量。
+
 
 函数指针
 当项目比较大，代码变得复杂了以后，函数指针就体现出了其优越性。
@@ -102,10 +93,7 @@ Define和const都有定义作用,
 如果不管内部实现，你会发现，除了函数名不一样之外，返回值，包括函数入参都是相同的，这时候如果要调用不同的排序方法，
 就可以使用指针函数来实现，我们只需要修改函数指针初始化的地方，而不需要去修改每个调用的地方（特别是当调用特别频繁的时候）。
 
-作者：侯童鞋
-链接：https://www.jianshu.com/p/ac1d4854100c
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
 定义:#函数返回值类型 (* 指针变量名) (函数参数列表);
 赋值: 函数指针变量 =  函数名;
 函数指针的一个非常典型的应用就是回调函数。
@@ -152,7 +140,7 @@ int main(void)
 
 // A simple registry for caffe commands.
 // 用typedef定义函数指针方法,BrewFunction 作为GetBrewFunction()函数的返回类型，可以是 train()，test()，device_query()，time() 这四个函数指针的其中一个
-typedef int (*BrewFunction)();
+typedef int (*BrewFunction)();//定义BrewFunction 是一个函数指针
 typedef std::map<caffe::string, BrewFunction> BrewMap;
 BrewMap g_brew_map;
 
